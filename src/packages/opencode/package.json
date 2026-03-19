@@ -1,0 +1,53 @@
+{
+	"name": "@acontext/opencode",
+	"version": "0.1.0",
+	"type": "module",
+	"main": "./index.ts",
+	"description": "Acontext skill memory plugin for OpenCode — auto-capture, auto-learn, native skill sync",
+	"license": "Apache-2.0",
+	"keywords": [
+		"opencode",
+		"plugin",
+		"memory",
+		"acontext",
+		"skill-memory",
+		"long-term-memory"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/memodb-io/Acontext"
+	},
+	"homepage": "https://github.com/memodb-io/Acontext",
+	"bugs": {
+		"url": "https://github.com/memodb-io/Acontext/issues"
+	},
+	"files": [
+		"index.ts",
+		"README.md"
+	],
+	"scripts": {
+		"test": "node --experimental-vm-modules node_modules/.bin/jest --forceExit"
+	},
+	"dependencies": {
+		"@acontext/acontext": "^0.1.18"
+	},
+	"peerDependencies": {
+		"@opencode-ai/plugin": ">=0.0.1"
+	},
+	"peerDependenciesMeta": {
+		"@opencode-ai/plugin": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@opencode-ai/plugin": "*",
+		"@types/jest": "^30.0.0",
+		"jest": "^30.3.0",
+		"ts-jest": "^29.4.6",
+		"typescript": "^5.9.3",
+		"zod": "^4.3.6"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

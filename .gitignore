@@ -219,6 +219,10 @@ go.work
 # OpenClaw plugin runtime data
 src/packages/openclaw/data/
 
+# OpenCode plugin runtime data
+src/packages/opencode/data/
+src/packages/opencode/node_modules/
+
 # Claude Code plugin runtime data & build artifacts
 src/packages/claude-code/plugin/data/
 !src/packages/claude-code/plugin/data/.gitkeep
