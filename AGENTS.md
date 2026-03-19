@@ -10,6 +10,7 @@ Acontext is Agent Skills as a Memory Layer for production AI Agents
 - Dashboard: `dashboard/`
 - Dashboard (OSS): `src/server/ui/`
 - OpenClaw Plugin: `src/packages/openclaw/` (npm: `@acontext/openclaw`)
+- OpenCode Plugin: `src/packages/opencode/` (npm: `@acontext/opencode`)
 - Sandbox Cloudflare: `src/packages/sandbox-cloudflare/` — a scaffolding/template package (npm: `@acontext/create-sandbox-cloudflare`). Its `prepublishOnly` script copies `src/server/sandbox/cloudflare/` into `template/` with variable substitution, so changes to the Cloudflare Worker source in `src/server/sandbox/cloudflare/` are automatically picked up on publish.
 - E2E Tests: `src/server/tests/e2e/` — integration tests that run the full stack (API + Core + deps) via `docker-compose.test.yml`. When modifying server-side behavior, check if e2e coverage should be added or updated.
 - Landing Page: `landingpage`
@@ -54,6 +55,7 @@ When releasing a new version, follow these steps in order:
    - TypeScript SDK: update `"version"` in `src/client/acontext-ts/package.json`
    - Python SDK: update `version` in `src/client/acontext-py/pyproject.toml`
    - OpenClaw Plugin: update `"version"` in `src/packages/openclaw/package.json`, `version` in `src/packages/openclaw/index.ts` (the plugin object), **and** `expect(plugin.version)` in `src/packages/openclaw/tests/plugin.test.ts`
+   - OpenCode Plugin: update `"version"` in `src/packages/opencode/package.json` **and** `PLUGIN_VERSION` in `src/packages/opencode/index.ts`
    - Sandbox Cloudflare: update `"version"` in `src/packages/sandbox-cloudflare/package.json`
    - Claude Code Plugin: run `npm run release -- X.Y.Z` in `src/packages/claude-code/` — this updates `package.json`, `plugin/.claude-plugin/plugin.json`, and `.claude-plugin/marketplace.json`, then rebuilds the plugin bundles automatically. Full steps:
      ```bash
@@ -69,6 +71,7 @@ When releasing a new version, follow these steps in order:
    - TypeScript SDK: run `npm install` in `src/client/acontext-ts/` (updates `package-lock.json`)
    - Python SDK: run `uv lock` in `src/client/acontext-py/` (updates `uv.lock`)
    - OpenClaw Plugin: run `npm install` in `src/packages/openclaw/` (updates `package-lock.json`)
+   - OpenCode Plugin: run `npm install` in `src/packages/opencode/` (updates `package-lock.json`)
    - Sandbox Cloudflare: no lock file needed (template is synced from `src/server/sandbox/cloudflare` via `prepublishOnly` script)
    - Claude Code Plugin: no lock file needed (`npm run release` already rebuilds bundles)
 3. **Commit** the version bump + lock file changes.
@@ -83,6 +86,7 @@ When releasing a new version, follow these steps in order:
 | Python SDK         | `sdk-py/vX.Y.Z`                     | PyPI (`acontext`)                           | `src/client/acontext-py`          | `client-release-py.yaml`                  |
 | CLI                | `cli/vX.Y.Z`                        | GitHub Releases (binaries)                  | `src/client/acontext-cli`         | `cli-release.yaml`                        |
 | OpenClaw Plugin    | `package-openclaw/vX.Y.Z`           | npm (`@acontext/openclaw`)                  | `src/packages/openclaw`           | `package-release-openclaw.yaml`           |
+| OpenCode Plugin    | `package-opencode/vX.Y.Z`           | npm (`@acontext/opencode`)                  | `src/packages/opencode`           | `package-release-opencode.yaml`           |
 | Sandbox Cloudflare | `package-sandbox-cloudflare/vX.Y.Z` | npm (`@acontext/create-sandbox-cloudflare`) | `src/packages/sandbox-cloudflare` | `package-release-sandbox-cloudflare.yaml` |
 | Claude Code Plugin | `package-claude-code/vX.Y.Z`        | Claude Plugin Marketplace                   | `src/packages/claude-code`        | `package-release-claude-code.yaml`        |
 | Helm Chart         | `chart/vX.Y.Z`                      | ghcr.io (OCI helm chart)                    | `charts/acontext`                 | `publish-chart.yaml`                      |
